@@ -1,0 +1,9 @@
+npm install -g @compodoc/compodoc
+npx compodoc -p tsconfig.json
+npx compodoc -s
+
+netstat -ano | findstr :8080
+
+taskkill /PID 14496 /F
+
+npx compodoc -s -p tsconfig.json

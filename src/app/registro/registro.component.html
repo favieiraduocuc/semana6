@@ -1,0 +1,84 @@
+<div class="container my-5">
+  <h2 class="text-center mb-4 text-primary">Formulario de Registro</h2>
+
+  <form [formGroup]="registroForm" (ngSubmit)="registrarUsuario()">
+
+    <!-- Nombre -->
+    <input type="text" class="form-control mb-1" placeholder="Nombre completo"
+      formControlName="nombre"
+      [ngClass]="{ 'is-invalid': f['nombre'].touched && f['nombre'].invalid }">
+    <div class="text-danger" *ngIf="f['nombre'].touched && f['nombre'].errors">
+      <div *ngIf="f['nombre'].errors['required']">El nombre es obligatorio.</div>
+      <div *ngIf="f['nombre'].errors['pattern']">Solo se permiten letras y espacios.</div>
+    </div>
+
+    <!-- Usuario -->
+    <input type="text" class="form-control mb-1" placeholder="Usuario"
+      formControlName="usuario"
+      [ngClass]="{ 'is-invalid': f['usuario'].touched && f['usuario'].invalid }">
+    <div class="text-danger" *ngIf="f['usuario'].touched && f['usuario'].errors?.['required']">
+      El usuario es obligatorio.
+    </div>
+
+    <!-- Correo -->
+    <input type="email" class="form-control mb-1" placeholder="Correo"
+      formControlName="correo"
+      [ngClass]="{ 'is-invalid': f['correo'].touched && f['correo'].invalid }">
+    <div class="text-danger" *ngIf="f['correo'].touched && f['correo'].errors">
+      <div *ngIf="f['correo'].errors['required']">El correo es obligatorio.</div>
+      <div *ngIf="f['correo'].errors['email']">Formato de correo inválido.</div>
+    </div>
+
+    <!-- Clave -->
+    <input type="password" class="form-control mb-1" placeholder="Contraseña"
+      formControlName="clave"
+      [ngClass]="{ 'is-invalid': f['clave'].touched && f['clave'].invalid }">
+    <div class="text-danger" *ngIf="f['clave'].touched && f['clave'].errors">
+      <div *ngIf="f['clave'].errors['required']">La contraseña es obligatoria.</div>
+      <div *ngIf="f['clave'].errors['minlength']">Debe tener al menos 6 caracteres.</div>
+      <div *ngIf="f['clave'].errors['pattern']">
+        La contraseña debe contener al menos:
+        <ul class="mb-0">
+          <li>Una letra</li>
+          <li>Un número</li>
+          <li>Un carácter especial ($!%*#?&)</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Clave2 -->
+    <input type="password" class="form-control mb-1" placeholder="Repetir contraseña"
+      formControlName="clave2"
+      [ngClass]="{ 'is-invalid': f['clave2'].touched && (f['clave2'].invalid || registroForm.errors?.['clavesNoCoinciden']) }">
+    <div class="text-danger" *ngIf="f['clave2'].touched">
+      <div *ngIf="f['clave2'].errors?.['required']">Debe repetir la contraseña.</div>
+      <div *ngIf="registroForm.errors?.['clavesNoCoinciden']">Las contraseñas no coinciden.</div>
+    </div>
+
+    <!-- Fecha -->
+    <input type="date" class="form-control mb-1" formControlName="fecha"
+      [ngClass]="{ 'is-invalid': f['fecha'].touched && f['fecha'].invalid }">
+    <div class="text-danger" *ngIf="f['fecha'].touched && f['fecha'].errors">
+      <div *ngIf="f['fecha'].errors['required']">La fecha es obligatoria.</div>
+      <div *ngIf="f['fecha'].errors['edadMinima']">Debes tener al menos 13 años para registrarte.</div>
+    </div>
+
+    <!-- Dirección (opcional) -->
+    <input type="text" class="form-control mb-2" placeholder="Dirección (opcional)" formControlName="direccion">
+
+    <!-- Robot -->
+    <div class="form-check mb-3">
+      <input type="checkbox" class="form-check-input" id="robotCheck"
+        formControlName="robot"
+        [ngClass]="{ 'is-invalid': f['robot'].touched && f['robot'].invalid }">
+      <label class="form-check-label" for="robotCheck">No soy un robot</label>
+    </div>
+    <div class="text-danger mb-3" *ngIf="f['robot'].touched && f['robot'].errors?.['required']">
+      Debes verificar que no eres un robot.
+    </div>
+
+    <button type="submit" class="btn btn-success w-100" [disabled]="registroForm.invalid">Registrarse</button>
+
+    <div *ngIf="mensaje" class="alert alert-info mt-3">{{ mensaje }}</div>
+  </form>
+</div>

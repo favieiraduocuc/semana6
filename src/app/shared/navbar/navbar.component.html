@@ -1,0 +1,64 @@
+<nav class="navbar navbar-expand-lg custom-navbar">
+  <div class="container-fluid d-flex justify-content-center align-items-center gap-4">
+
+    <!-- Logo a la izquierda -->
+    <a class="navbar-brand" (click)="goHome()" style="cursor: pointer;">
+      <img src="assets/images/logo2.jpeg" alt="Lumora Logo" width="80" height="auto" class="d-inline-block align-text-top">
+    </a>
+
+    <!-- Botones centrados -->
+    <ul class="navbar-nav d-flex flex-row gap-3">
+      <li class="nav-item">
+        <button class="btn btn-outline-primary" (click)="goHome()">Inicio</button>
+      </li>
+      <li class="nav-item">
+        <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#loginClienteModal">
+          Ingreso Cliente
+        </button>
+      </li>
+      <li class="nav-item">
+        <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#loginEmpleadoModal">
+          Ingreso Empleado
+        </button>
+      </li>
+      <li class="nav-item">
+        <a routerLink="/registro" class="btn btn-success">Registrarse</a>
+      </li>
+    </ul>
+        <!-- Logo a la Derecha -->
+    <a class="navbar-brand" (click)="goHome()" style="cursor: pointer;">
+      <img src="assets/images/logo2.jpeg" alt="Lumora Logo" width="80" height="auto" class="d-inline-block align-text-top">
+    </a>
+
+  </div>
+</nav>
+
+<!-- Modal Cliente -->
+<div class="modal fade" id="loginClienteModal" tabindex="-1" aria-labelledby="loginClienteModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="loginClienteModalLabel">Ingreso Cliente</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+      </div>
+      <div class="modal-body">
+        <app-login-cliente></app-login-cliente>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal Empleado -->
+<div class="modal fade" id="loginEmpleadoModal" tabindex="-1" aria-labelledby="loginEmpleadoModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="loginEmpleadoModalLabel">Ingreso Empleado</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+      </div>
+      <div class="modal-body">
+        <app-login-empleado></app-login-empleado>
+      </div>
+    </div>
+  </div>
+</div>

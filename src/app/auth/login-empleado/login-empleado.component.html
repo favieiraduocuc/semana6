@@ -1,0 +1,47 @@
+<div class="container mt-5" style="max-width: 400px;">
+  <h2 class="text-center mb-4">Ingreso Empleado</h2>
+
+  <!-- Formulario con binding -->
+  <form (ngSubmit)="loginEmpleado()" #form="ngForm">
+    <div class="mb-3">
+      <label for="empleadoId" class="form-label">Empleado ID</label>
+      <input
+        type="text"
+        class="form-control"
+        id="empleadoId"
+        placeholder="Ingresa tu ID"
+        [(ngModel)]="usuario"
+        name="usuario"
+        required
+      />
+    </div>
+
+    <div class="mb-3">
+      <label for="password" class="form-label">Contraseña</label>
+      <input
+        type="password"
+        class="form-control"
+        id="password"
+        placeholder="Ingresa tu contraseña"
+        [(ngModel)]="clave"
+        name="clave"
+        required
+      />
+    </div>
+
+    <!-- Mensaje de error -->
+    <div class="text-danger text-center mt-2" *ngIf="mensaje">
+      {{ mensaje }}
+    </div>
+
+    <div class="d-grid gap-2 mt-3">
+      <button type="submit" class="btn btn-primary">Ingresar</button>
+    </div>
+
+    <div class="text-center mt-3">
+      <a href="#" (click)="irARecuperar($event)">
+        ¿Olvidaste tu contraseña?
+      </a>
+    </div>
+  </form>
+</div>

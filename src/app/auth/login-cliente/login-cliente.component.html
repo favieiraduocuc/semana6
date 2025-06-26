@@ -1,0 +1,42 @@
+<div class="container mt-5" style="max-width: 400px;">
+  <h2 class="text-center mb-4">Iniciar Sesión</h2>
+
+  <!-- Formulario con enlace a método del componente -->
+  <form (ngSubmit)="loginCliente()">
+    <div class="mb-3">
+      <label for="username" class="form-label">Usuario</label>
+      <input type="text"
+             class="form-control"
+             id="username"
+             placeholder="Ingresa tu usuario"
+             [(ngModel)]="usuario"
+             name="usuario"
+             required>
+    </div>
+
+    <div class="mb-3">
+      <label for="password" class="form-label">Contraseña</label>
+      <input type="password"
+             class="form-control"
+             id="password"
+             placeholder="Ingresa tu contraseña"
+             [(ngModel)]="clave"
+             name="clave"
+             required>
+    </div>
+
+    <div class="d-grid gap-2">
+      <button type="submit" class="btn btn-primary">Ingresar</button>
+    </div>
+
+    <!-- Mensaje de error -->
+    <div class="text-danger text-center mt-2" *ngIf="mensaje">
+      {{ mensaje }}
+    </div>
+
+    <!-- Enlaces adicionales -->
+    <div class="text-center mt-3">
+      <a href="#" data-bs-toggle="modal" data-bs-target="#registerModal">¿No tienes cuenta? Regístrate</a><br>
+        <a href="#" (click)="irARecuperar($event)">¿Olvidaste tu contraseña?</a>    </div>
+  </form>
+</div>
