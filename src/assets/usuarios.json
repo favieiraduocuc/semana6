@@ -1,0 +1,18 @@
+[
+  {
+    "nombre": "Juan Pérez",
+    "usuario": "juanp",
+    "correo": "juan@mail.com",
+    "clave": "123456",
+    "fecha": "1990-01-01",
+    "direccion": "Santiago"
+  },
+  {
+    "nombre": "Ana Gómez",
+    "usuario": "anag",
+    "correo": "ana@mail.com",
+    "clave": "clave123",
+    "fecha": "1992-06-10",
+    "direccion": "Viña del Mar"
+  }
+]

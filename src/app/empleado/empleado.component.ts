@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { RouterModule } from '@angular/router'; // 👈 IMPORTANTE
 import {
   ReactiveFormsModule,
   FormBuilder,
@@ -14,7 +15,7 @@ import {
   standalone: true,
   templateUrl: './empleado.component.html',
   styleUrls: ['./empleado.component.css'],
-  imports: [CommonModule, ReactiveFormsModule]
+  imports: [CommonModule, ReactiveFormsModule, RouterModule] // 👈 AÑADIDO RouterModule
 })
 export class EmpleadoComponent {
   mensaje: string = '';

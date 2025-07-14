@@ -13,5 +13,20 @@ export const routes: Routes = [
   { path: 'seguimiento', component: SeguimientoComponent },
   { path: 'cotizador', component: CotizadorComponent },
   { path: 'contacto', component: ContactoComponent },
-  { path: 'registro', loadComponent: () => import('./registro/registro.component').then(m => m.RegistroComponent) }
+  {
+    path: 'registro',
+    loadComponent: () => import('./registro/registro.component').then(m => m.RegistroComponent)
+  },
+{
+  path: 'usuarios',
+  loadComponent: () =>
+    import('./lista-usuarios/lista-usuarios.component').then(
+      m => m.ListaUsuariosComponent
+    )
+},
+  {
+    path: 'empleado',
+    loadComponent: () => import('./empleado/empleado.component').then(m => m.EmpleadoComponent)
+  },
+  { path: '**', redirectTo: '', pathMatch: 'full' } // Redirección si no encuentra la ruta
 ];

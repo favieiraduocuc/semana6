@@ -1,0 +1,12 @@
+npm run build --configuration=production
+
+docker build -t lumora-client .
+
+docker run -d -p 4200:80 --name lumora-app lumora-client
+
+http://localhost:4200
+
+docker stop lumora-app
+docker rm lumora-app
+docker build -t lumora-client .
+docker run -d -p 4200:80 --name lumora-app lumora-client

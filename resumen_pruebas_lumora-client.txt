@@ -1,0 +1,86 @@
+✅ RESUMEN DE PRUEBAS UNITARIAS EN lumora-client ✅
+
+1. ListaUsuariosComponent (7 pruebas)
+- should cancel editing and reset the form
+- should edit a user
+- should delete a user
+- should not add user if required fields are missing
+- should add a new user
+- should create
+
+2. RegistroComponent (6 pruebas)
+- debe marcar error si el nombre contiene caracteres inválidos
+- debe marcar error si correo no tiene formato válido
+- formulario debe ser inválido al inicio
+- debe marcar error si las claves no coinciden
+- formulario debe ser válido si se ingresan datos correctos
+- should create
+
+3. LoginClienteComponent (template-driven) (6 pruebas)
+- debe navegar a /cliente si las credenciales son correctas
+- debe redirigir a /forgot-password desde el enlace
+- debe crearse correctamente
+- debe mostrar mensaje si los campos están vacíos
+- mensaje debe limpiarse después de login exitoso
+- no debe redirigir si las credenciales son incorrectas
+
+4. NavbarComponent (6 pruebas)
+- debe contener un botón que ejecuta goHome()
+- debe tener el método goHome definido
+- debe navegar a la ruta raíz (/) cuando se llama goHome()
+- debe crearse correctamente
+- debe tener el router definido en el constructor
+- debe contener una etiqueta nav
+
+5. UsuarioService (6 pruebas)
+- should contain required user fields
+- should make two GET requests when called twice
+- should handle error if JSON fetch fails
+- should return empty array if no users
+- should be created
+- should fetch users from JSON
+
+6. LoginEmpleadoComponent (template-driven) (6 pruebas)
+- debe redirigir a /forgot-password desde el enlace
+- debe navegar a /empleado si las credenciales son correctas
+- debe mostrar mensaje si los campos están vacíos
+- debe crearse correctamente
+- debe contener un botón con texto "Ingresar"
+- debe contener un input para el usuario
+
+7. ForgotPasswordComponent (6 pruebas)
+- correo debe estar vacío inicialmente
+- debe actualizar el valor de correo desde la vista
+- should create
+- debe mostrar mensaje en consola al enviar el correo
+- debe dejar el campo vacío luego de enviar si se desea reiniciar
+- debe llamar a enviarCorreoRecuperacion al hacer clic en el botón
+
+8. AppComponent (5 pruebas)
+- should create the app
+- should have a defined ActivatedRoute provider
+- should have the 'lumora-client' title
+- should have a snapshot on route
+- should handle queryParams observable
+- should have a non-empty title property
+
+9. SeguimientoComponent (1 prueba)
+- should create
+
+10. HomeComponent (1 prueba)
+- should create
+
+11. EmpleadoComponent (1 prueba)
+- should create
+
+12. FooterComponent (1 prueba)
+- should create
+
+13. CotizadorComponent (1 prueba)
+- should create
+
+14. ContactoComponent (1 prueba)
+- should create
+
+15. ClienteComponent (1 prueba)
+- should create

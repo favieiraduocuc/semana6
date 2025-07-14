@@ -14,7 +14,7 @@ describe('LoginClienteComponent (template-driven)', () => {
       imports: [
         FormsModule,
         RouterTestingModule,
-        LoginClienteComponent // ✅ standalone component
+        LoginClienteComponent
       ],
       providers: [
         {
@@ -36,12 +36,12 @@ describe('LoginClienteComponent (template-driven)', () => {
     fixture.detectChanges();
   });
 
-  // ✅ Test 1: Componente creado
+  // ✅ Test 1
   it('debe crearse correctamente', () => {
     expect(component).toBeTruthy();
   });
 
-  // ✅ Test 2: Formulario inválido con campos vacíos
+  // ✅ Test 2
   it('debe mostrar mensaje si los campos están vacíos', () => {
     component.usuario = '';
     component.clave = '';
@@ -49,26 +49,41 @@ describe('LoginClienteComponent (template-driven)', () => {
     expect(component.mensaje).toContain('Usuario o clave incorrecta');
   });
 
-  // ✅ Test 3: Login exitoso con credenciales correctas
+  // ✅ Test 3
   it('debe navegar a /cliente si las credenciales son correctas', () => {
     const spy = spyOn(component['router'], 'navigate');
-
     component.usuario = 'cliente';
     component.clave = '1234';
     component.loginCliente();
-
     expect(component.mensaje).toBe('');
     expect(spy).toHaveBeenCalledWith(['/cliente']);
   });
 
-  // ✅ Test 4: Click en recuperar redirige a forgot-password
+  // ✅ Test 4
   it('debe redirigir a /forgot-password desde el enlace', () => {
     const spy = spyOn(component['router'], 'navigate');
     const fakeEvent = new Event('click');
     spyOn(fakeEvent, 'preventDefault');
-
     component.irARecuperar(fakeEvent);
-
     expect(spy).toHaveBeenCalledWith(['/forgot-password']);
+  });
+
+  // ✅ Test 5
+  it('no debe redirigir si las credenciales son incorrectas', () => {
+    const spy = spyOn(component['router'], 'navigate');
+    component.usuario = 'otro';
+    component.clave = 'claveIncorrecta';
+    component.loginCliente();
+    expect(component.mensaje).toContain('Usuario o clave incorrecta');
+    expect(spy).not.toHaveBeenCalled();
+  });
+
+  // ✅ Test 6
+  it('mensaje debe limpiarse después de login exitoso', () => {
+    component.usuario = 'cliente';
+    component.clave = '1234';
+    component.mensaje = 'Error anterior';
+    component.loginCliente();
+    expect(component.mensaje).toBe('');
   });
 });

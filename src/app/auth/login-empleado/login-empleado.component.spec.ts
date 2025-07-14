@@ -53,4 +53,16 @@ describe('LoginEmpleadoComponent (template-driven)', () => {
     component.irARecuperar(fakeEvent);
     expect(spy).toHaveBeenCalledWith(['/forgot-password']);
   });
+
+  // ✅ Test 5: Input de usuario presente
+  it('debe contener un input para el usuario', () => {
+    const inputUsuario = fixture.debugElement.query(By.css('input[name="usuario"]'));
+    expect(inputUsuario).toBeTruthy();
+  });
+
+  // ✅ Test 6: Botón de login presente
+  it('debe contener un botón con texto "Ingresar"', () => {
+    const boton = fixture.debugElement.query(By.css('button[type="submit"]'));
+    expect(boton.nativeElement.textContent).toContain('Ingresar');
+  });
 });
